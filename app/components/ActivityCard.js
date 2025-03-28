@@ -1,10 +1,31 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
+import Flashcards from './Flashcards';
+import Matchmaking from './Matchmaking';
+import FillBlank from './FillBlank';
 
 export default function ActivityCard(){
+    const [active, setActive] = useState(null);
+
+    const renderActivity = () => {
+        switch (active){
+            case "Flashcard":
+            return <Flashcards />;
+            case 'Matchmaking':
+            return <Matchmaking />;
+            case 'FillInTheBlanks':
+            return <FillBlank />
+            default:
+            return <div>Select an activity</div>;
+        }
+    }
     return(
         <div>
-            <p>The learning activities will go here</p>
+        <button onClick={() => setActive("Flashcard")}>Flashcards</button>
+        <button onClick={() => setActive("Matchmaking")}>Matchmaking</button>
+        <button onClick={() => setActive("FillInTheBlanks")}>FillInTheBlanks</button>
+        {renderActivity()}
         </div>
+        
     )
 }
