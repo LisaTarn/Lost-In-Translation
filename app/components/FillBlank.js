@@ -33,7 +33,8 @@ export default function FillBlank(){
   };
 
     return(
-        <div>
+      <div className="page">
+      <div className="fillblank-container">
             {sentences.map((sentence, index) => (
         <div key={index} style={{ marginBottom: '20px' }}>
           <p>{sentence.english}</p>
@@ -54,5 +55,6 @@ export default function FillBlank(){
       ))}
       <button onClick={checkAnswers}>Check Answers</button>
     </div> 
+    </div>
     )
 }

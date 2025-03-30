@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
+import '../globals.css';
 
 export default function Machmaking(){
   
@@ -34,21 +35,24 @@ export default function Machmaking(){
       };
 
       React.useEffect(() => {getWord();}, []);
-    return(
-        <div>
+      return (
+        <div className="page">
+          <div className="matchmaking-container">
             <h1>Matchmaking</h1>
-            <h2>{currentWord.english}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your answer here"
-        />
-        <button type="submit">Submit</button>
-      </form>
-      
-      <p>Your score: {score}</p>
+            <div className="word-container">
+              <h2>{currentWord.english}</h2>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Type your answer here"
+                />
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+            <p>Your score: {score}</p>
+          </div>
         </div>
     )
 }

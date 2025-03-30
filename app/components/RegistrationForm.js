@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
+import '../globals.css';
 
 export default function RegistrationForm(){
     const {setUser} = useContext(UserContext);
@@ -22,6 +23,9 @@ export default function RegistrationForm(){
     };
 
     return(
+        <div className="registration-page">
+        <div className="registration-container">
+            <div className="registration-box">
         <form onSubmit={handleSubmit}>
             <h1>Register for L.I.T.</h1>
           <label htmlFor="username">Username:</label>
@@ -53,5 +57,19 @@ export default function RegistrationForm(){
           />
           <button type="submit">Register</button>
         </form>
+        </div>
+
+        <div className="info-box">
+                <img src="/LITLOGO.png" alt="LIT Logo" className="logo" />
+                <p>
+                    At L.I.T, we believe that language is more than just words—it's a bridge to new cultures, connections, and opportunities. Our mission is to make learning languages fun, accessible, and engaging for everyone, no matter where they are in their journey.
+                    <br /><br />
+                    We value diversity, inclusivity, and innovation, ensuring that our platform celebrates languages from all over the world. With an intuitive design, interactive lessons, and a supportive community, we aim to help learners gain confidence and fluency in a way that feels natural and enjoyable.
+                    <br /><br />
+                    Join us in breaking language barriers and exploring the world—one word at a time!
+                </p>
+            </div>
+        </div>
+        </div>
     )
 }

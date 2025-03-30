@@ -1,6 +1,7 @@
 import NavBar from "./components/NavBar";
 import { Progress } from "./components/Progress";
 import { UserDetails } from "./components/UserDetails";
+import './globals.css';
 
 export const metadata = {
   title: 'Lost in Translation'

@@ -16,16 +16,17 @@ export default function ActivityCard(){
             case 'FillInTheBlanks':
             return <FillBlank />
             default:
-            return <div>Select an activity</div>;
+                return <div className="activity-header">SELECT AN ACTIVITY</div>;
+            }
         }
-    }
     return(
-        <div>
+        <div className="activity-card">
+            {renderActivity()}
+            <div className="button-container">
         <button onClick={() => setActive("Flashcard")}>Flashcards</button>
         <button onClick={() => setActive("Matchmaking")}>Matchmaking</button>
         <button onClick={() => setActive("FillInTheBlanks")}>FillInTheBlanks</button>
-        {renderActivity()}
         </div>
-        
+        </div>
     )
 }
