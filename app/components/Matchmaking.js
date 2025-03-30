@@ -1,11 +1,13 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ProgressContext } from "./Progress";
 
 export default function Machmaking(){
   
- const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
   const [currentWord, setCurrentWord] = useState("");
   const [input, setInput] = useState("");
+  const {progress, setProgress} = useContext(ProgressContext);
 
   const words = [
     { english: "Hello", french: "Bonjour" },
@@ -21,6 +23,8 @@ export default function Machmaking(){
         e.preventDefault();
         if (input.trim().toLowerCase() === currentWord.french.toLowerCase()) {
           setScore(score + 1);
+          const currentProgress = progress;
+          setProgress(currentProgress + 1);
           alert("Correct!");
         } else {
           alert(`Incorrect! The correct answer was "${currentWord.french}"`);

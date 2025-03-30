@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ProgressContext } from "./Progress";
 
 export default function FillBlank(){
     const sentences = [
@@ -9,7 +10,8 @@ export default function FillBlank(){
     ]
 
     const [answers, setAnswers] = useState(Array(sentences.length).fill(''));
-  const [feedback, setFeedback] = useState(null);
+    const [feedback, setFeedback] = useState(null);
+    const {progress, setProgress} = useContext(ProgressContext);
 
   const handleInputChange = (index, value) => {
     const updatedAnswers = [...answers];
@@ -20,6 +22,13 @@ export default function FillBlank(){
   const checkAnswers = () => {
     const correctAnswers = sentences.map(sentence => sentence.french);
     const result = answers.map((answer, index) => answer.trim().toLowerCase() === correctAnswers[index].trim().toLowerCase());
+    let currentProgress = progress;
+    for (const res of result){
+      if (res){
+        currentProgress++;
+      }
+    }
+    setProgress(currentProgress);
     setFeedback(result);
   };
 

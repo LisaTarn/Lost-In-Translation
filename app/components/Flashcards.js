@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ProgressContext } from "./Progress";
 
-const FrontBack = ({ frontContent, backContent }) => {
+const FrontBack = ({ frontContent, backContent}) => {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [isCredited, setIsCredited] = useState(false);
+    const {progress, setProgress} = useContext(ProgressContext);
 
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
+        const currentProgress = progress;
+        if (!isCredited){
+          setProgress(currentProgress + 1);
+          setIsCredited(true);
+        }
     }
 
     return(
