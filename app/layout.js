@@ -1,4 +1,5 @@
 import NavBar from "./components/NavBar";
+import { Progress } from "./components/Progress";
 import { UserDetails } from "./components/UserDetails";
 
 export const metadata = {
@@ -10,7 +11,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       <NavBar />
-      <UserDetails>{children}</UserDetails></body>
+      <UserDetails>
+        <Progress>
+            {children}
+        </Progress>
+      </UserDetails>
+      </body>
     </html>
   )
 }
