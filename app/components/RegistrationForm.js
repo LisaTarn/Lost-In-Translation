@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
-import { Logo } from './app/images/logo.png'
+import { Logo } from '/app/images/logo.png'
 import '../globals.css';
 
 export default function RegistrationForm(){
