@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
+import { Logo } from './app/images/logo.png'
 import '../globals.css';
 
 export default function RegistrationForm(){
@@ -60,7 +61,7 @@ export default function RegistrationForm(){
         </div>
 
         <div className="info-box">
-                <img src="./app/images/logo.png" alt="LIT Logo" className="logo" />
+                <img src={Logo.src} alt="LIT Logo" className="logo" />
                 <p>
                     At L.I.T, we believe that language is more than just words—it's a bridge to new cultures, connections, and opportunities. Our mission is to make learning languages fun, accessible, and engaging for everyone, no matter where they are in their journey.
                     <br /><br />
