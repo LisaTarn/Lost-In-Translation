@@ -61,7 +61,7 @@ export default function RegistrationForm(){
         </div>
 
         <div className="info-box">
-                <Image src={'/images/logo.png'}
+                <Image src={'../public/images/logo.png'}
                 alt="LIT Logo" 
                 width={500}
                 height={300}
