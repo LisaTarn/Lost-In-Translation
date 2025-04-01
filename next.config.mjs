@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
     output: "export",
     reactStrictMode: true,
-  //  images: { unoptimized: true} 
-  basePath: '/Lost-In-Translation',
-  assetPrefix: '/Lost-in-Translation',
+  images: { unoptimized: true},
+  basePath: isProd? '/Lost-In-Translation' : "",
+  assetPrefix: isProd? '/Lost-in-Translation' : "",
+  output: 'export'
 };
 
 export default nextConfig;
