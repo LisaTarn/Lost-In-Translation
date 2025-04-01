@@ -1,12 +1,8 @@
 'use client';
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
-<<<<<<< HEAD
 import Image from 'next/image';
-=======
->>>>>>> 39ecd96e65ffb5b0e15dad654873c23419a54635
 import '../globals.css';
-import Image from 'next/image';
 
 export default function RegistrationForm(){
     const {setUser} = useContext(UserContext);
@@ -65,15 +61,11 @@ export default function RegistrationForm(){
         </div>
 
         <div className="info-box">
-<<<<<<< HEAD
                 <Image src='/images/logo.png' 
                 alt="LIT Logo" 
                 width={500}
                 height={300}
                  />
-=======
-                <img src="/images/logo.png" alt="LIT Logo" className="logo" />
->>>>>>> 39ecd96e65ffb5b0e15dad654873c23419a54635
                 <p>
                     At L.I.T, we believe that language is more than just words—it's a bridge to new cultures, connections, and opportunities. Our mission is to make learning languages fun, accessible, and engaging for everyone, no matter where they are in their journey.
                     <br /><br />
