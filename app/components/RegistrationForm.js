@@ -65,6 +65,7 @@ export default function RegistrationForm(){
                 alt="LIT Logo" 
                 width={500}
                 height={300}
+                unoptimized
                  />
                 <p>
                     At L.I.T, we believe that language is more than just words—it's a bridge to new cultures, connections, and opportunities. Our mission is to make learning languages fun, accessible, and engaging for everyone, no matter where they are in their journey.
