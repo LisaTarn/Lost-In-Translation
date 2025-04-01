@@ -6,8 +6,8 @@ const nextConfig = {
     reactStrictMode: true,
   images: { unoptimized: true},
   basePath: isProd? '/Lost-In-Translation' : "",
-  assetPrefix: isProd? '/Lost-in-Translation' : "",
-  output: 'export'
+ // assetPrefix: isProd? '/Lost-in-Translation' : "",
+  
 };
 
 export default nextConfig;
