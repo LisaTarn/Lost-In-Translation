@@ -1,58 +1,101 @@
 'use client'
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import { ProgressContext } from "./Progress";
 import '../globals.css';
 
-export default function Machmaking(){
+const words = [
+  { english: "apple", french: "pomme" },
+  { english: "house", french: "maison" },
+  { english: "car", french: "voiture" },
+  { english: "tree", french: "arbre" },
+];
+
+
+const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
+
+export default function MatchGame() {
+  const [shuffledWords, setShuffledWords] = useState([]);
+  const [shuffledTranslations, setShuffledTranslations] = useState([]);
+  const [selectedEnglish, setSelectedEnglish] = useState(null);
+  const [matchedPairs, setMatchedPairs] = useState([]);
+  const [message, setMessage] = useState("");
+   const {progress, setProgress} = useContext(ProgressContext);
   
-  const [score, setScore] = useState(0);
-  const [currentWord, setCurrentWord] = useState("");
-  const [input, setInput] = useState("");
-  const {progress, setProgress} = useContext(ProgressContext);
 
-  const words = [
-    { english: "Hello", french: "Bonjour" },
-    { english: "Goodbye", french: "Au revoir" },
-    { english: "Thank you", french: "Merci" }]
+  useEffect(() => {
+    setShuffledWords(shuffleArray(words));
+    setShuffledTranslations(shuffleArray(words));
+  }, []);
 
-    const getWord = () =>{
-        const wordIndex = Math.floor(Math.random() * words.length);
-        setCurrentWord(words[wordIndex]);
+  const handleEnglishClick = (word) => {
+    if (!matchedPairs.includes(word)) {
+      setSelectedEnglish(word);
+      setMessage(""); // Clear previous message
     }
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (input.trim().toLowerCase() === currentWord.french.toLowerCase()) {
-          setScore(score + 1);
-          const currentProgress = progress;
-          setProgress(currentProgress + 1);
-          alert("Correct!");
-        } else {
-          alert(`Incorrect! The correct answer was "${currentWord.french}"`);
-        }
-        setInput("");
-        getWord();
-      };
+  };
 
-      React.useEffect(() => {getWord();}, []);
-      return (
-        <div className="page">
-          <div className="matchmaking-container">
-            <h1>Matchmaking</h1>
-            <div className="word-container">
-              <h2>{currentWord.english}</h2>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Type your answer here"
-                />
-                <button type="submit">Submit</button>
-              </form>
-            </div>
-            <p>Your score: {score}</p>
-          </div>
+  const handleFrenchClick = (word) => {
+    if (selectedEnglish) {
+      if (selectedEnglish.french === word.french) {
+        setMatchedPairs([...matchedPairs, selectedEnglish]);
+        const currentProgress = progress;
+          setProgress(currentProgress + 1);
+        setMessage("Correct!");
+      } else {
+        setMessage("Incorrect! Try again.");
+      }
+      setSelectedEnglish(null); // Reset selection after match attempt
+    }
+  };
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h2>Match English words to their French translations</h2>
+      <p>
+        {message}
+      </p>
+      <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+        <div>
+          <h3>English</h3>
+          {shuffledWords.map((word) => (
+            <button
+              key={word.english}
+              onClick={() => handleEnglishClick(word)}
+              disabled={matchedPairs.includes(word)}
+              style={{
+                display: "block",
+                margin: "5px",
+                padding: "10px",
+                backgroundColor: selectedEnglish === word? "#5852d6" :  " #34197e",
+                fontWeight: selectedEnglish === word ? "bold" : "normal",
+              }}
+            >
+              {word.english}
+            </button>
+          ))}
         </div>
-    )
+        <div>
+          <h3>French</h3>
+          {shuffledTranslations.map((word) => (
+            <button
+              key={word.french}
+              onClick={() => handleFrenchClick(word)}
+              disabled={matchedPairs.includes(word)}
+              style={{
+                display: "block",
+                margin: "5px",
+                padding: "10px",
+              }}
+            >
+              {word.french}
+            </button>
+          ))}
+        </div>
+      </div>
+      <h3>Matched Pairs:</h3>
+      {matchedPairs.map((pair) => (
+        <p key={pair.english}>{pair.english} - {pair.french}</p>
+      ))}
+    </div>
+  );
 }
