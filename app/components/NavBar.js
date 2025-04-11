@@ -9,8 +9,14 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeNavbar = () => {
+
+    setIsOpen(false);
+  }
+
   return (
-    <nav>
+    <nav
+    onMouseLeave={closeNavbar}>
       <button
         onClick={toggleNavbar}
       >
