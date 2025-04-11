@@ -20,13 +20,15 @@ export default function ActivityCard(){
             }
         }
     return(
+        
         <div className="activity-card">
-            {renderActivity()}
             <div className="button-container">
         <button onClick={() => setActive("Flashcard")}>Flashcards</button>
         <button onClick={() => setActive("Matchmaking")}>Matchmaking</button>
         <button onClick={() => setActive("FillInTheBlanks")}>FillInTheBlanks</button>
         </div>
+            {renderActivity()}
+            
         </div>
     )
 }
