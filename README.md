@@ -3,9 +3,10 @@
 ## Overview
 
 L.I.T. is a language-learner project built using Next.js, a React framework. L.I.T. helps users learn a new language using flashcards, matchmaking and fill in the blanks.  The user can track their progress on the progress page, and the user can register on the registration page, and afterwards view their details on the account page.
+
 ## Components 
 
-`ActivityCard.js` - Displays links to activities/components FillBlank.js, Flashcards.js and Matchmaking.js. - `FillBlank.js` - Contains fill in the blank activity.  - `Flashcards.js` - Contains flash card activity. - `Matchmaking` - Contains matchmaking activity. - `NavBar.js` -Contains collapsible navigation bar that links to home page, activities page, account page and registration page.- `Progress.js` - Contains the progress context for ProgressBar.js.- `ProgressBar.js` -Contains the percentage of activities completed using the progress context from Progress.js.- `RegistrationForm.js` -Contains the registration form.- `UserDetails.js` -Contains the user context for the Account page.   - `Layout.js` - Wraps pages with a consistent layout structure. 
+`ActivityCard.js` - Displays links to activities/components FillBlank.js, Flashcards.js and Matchmaking.js. - `FillBlank.js` - Contains fill in the blank activity.  - `Flashcards.js` - Contains flash card activity. - `Matchmaking.js` - Contains matchmaking activity. - `NavBar.js` -Contains collapsible navigation bar that links to home page, activities page, account page and registration page.- `Progress.js` - Contains the progress context for ProgressBar.js.- `ProgressBar.js` -Contains the percentage of activities completed using the progress context from Progress.js.- `RegistrationForm.js` -Contains the registration form.- `UserDetails.js` -Contains the user context for the Account page.   - `Layout.js` - Wraps pages with a consistent layout structure. 
 
 ## Routes 
 
