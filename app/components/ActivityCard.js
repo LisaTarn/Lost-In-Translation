@@ -1,9 +1,12 @@
 'use client'
 import React, { useContext, useState } from 'react';
-import Flashcards from './Flashcards';
 import Matchmaking from './Matchmaking';
 import FillBlank from './FillBlank';
 import { LanguageContext } from '../context/LanguageContext';
+import dynamic from 'next/dynamic';
+
+//load flashcards dynamically on client server
+const Flashcards = dynamic(() => import ('./Flashcards'), { ssr: false });
 
 export default function ActivityCard(){
     const [active, setActive] = useState(null);
@@ -32,7 +35,6 @@ export default function ActivityCard(){
             <div className="language-selection">
                 <label>Select Language:</label>
                 <select id="language" value={targetLanguage} onChange={handleLanguageChange}>
-                    <option value="en">English</option>
                     <option value="fr">French</option>
                     <option value="es">Spanish</option>
                     <option value="zh-TW">Chinese</option>

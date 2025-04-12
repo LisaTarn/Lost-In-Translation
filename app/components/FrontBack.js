@@ -9,14 +9,17 @@ const FrontBack = ({ frontContent, backContent}) => {
     const [isCredited, setIsCredited] = useState(false);
     const {progress, setProgress} = useContext(ProgressContext);
 
+    
     const handleFlip = () => {
         setIsFlipped(!isFlipped);
 
+    {/*const currentProgress = progress;
         if (!isCredited){
           setProgress(currentProgress + 1);
           setIsCredited(true);
         }
-    }
+    }*/}
+    };
 
     return(
       <div onClick={handleFlip} className={`flashcard ${isFlipped ? "flipped" : ""}`}>
@@ -25,11 +28,11 @@ const FrontBack = ({ frontContent, backContent}) => {
                     {frontContent}
                 </div>
                 <div className="flashcard-back">
-                    {backContent}
+                    {backContent ? backContent : "No translation available"}
                 </div>
             </div>
       </div>
-    )
-}
+    );
+};
 
 export default FrontBack;

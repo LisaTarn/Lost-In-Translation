@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import FrontBack from './FrontBack';
-import { sources } from "next/dist/compiled/webpack/webpack";
+//import { sources } from "next/dist/compiled/webpack/webpack";
 
 export default function Flashcards(){
     const { targetLanguage } = useContext(LanguageContext);
@@ -16,8 +16,7 @@ export default function Flashcards(){
     //API implementation
     useEffect(() => {
         const fetchTranslations = async () => {
-            const api = 'https://api.translateplus.io/v1/translate'
-            const apiKey = '4c0a9eb8ea20d1338b0f6534dbc83daa97c7eb95';
+            const api = 'https://libretranslate.de/translate'
 
             const translate = await Promise.all(flashcards.map(async (card) => {
                 try {
@@ -25,24 +24,28 @@ export default function Flashcards(){
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-API-Key': apiKey
                         },
                         body: JSON.stringify({
-                            text: card.front,
+                            q: card.front,
                             source: 'en',
-                            target: targetLanguage
-                        })
+                            target: 'targetLanguage',
+                            format: 'text',
+                        }),
                     });
+                    
                     const data = await translation.json();
-                    return {...card, back: data.translations[0]?.text || '[Transalation Error]'};
+                    return {...card, back: data.translatedText || 'Translation Error'};
+
                 } catch (error) {
                     console.error('Translation failed:', error);
-                    return {...card, back: '[Translation Error]'};
+                    return {...card, back: 'Translation Error'};
                 }
             }));
+
             //populate back of flashcard with translation
             setFlashcards(translate);
         };
+
         fetchTranslations();
     }, [targetLanguage]);
 
@@ -50,7 +53,7 @@ export default function Flashcards(){
         <div>
             <h1>Flashcards</h1>
             {flashcards.map((card, index) => (
-                <FrontBack key = {index} frontContent={card.front} backContent={card.back} />
+                <FrontBack key={index} frontContent={card.front} backContent={card.back} />
             ))}
         </div>
     );
