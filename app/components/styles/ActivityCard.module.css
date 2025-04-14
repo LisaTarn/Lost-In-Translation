@@ -2,40 +2,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
   }
-  
+
+  .defaultView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
 /* Language Selector Styles */
 .languageSelection {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-  padding: 0.8rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
 .languageSelection label {
-  font-weight: 600;
-  color: #2d3748;
-  font-size: 0.95rem;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 18px;
 }
 
 .languageSelection select {
-  padding: 0.5rem 1rem;
+  padding: 10px 20px;
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: white;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-width: 120px;
+  min-width: 150px;
 }
 
 .languageSelection select:hover {
@@ -51,34 +61,84 @@
   /* button container styles */
   .buttonContainer {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 400px;
+    order: 2;
+}
   
   /* button styles */
   .button {
     font-family: 'Poppins', sans-serif;
     background-color: #34197e;
+    height: auto;
     color: white;
     border: none;
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 18px 30px;
+    font-size: 20px;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease-in-out;
-    min-width: 160px;
-  }
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
   .button:hover {
     background-color: #5852d6;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
-  
-  /* activity header styles */
-  .activityHeader {
-    font-size: 36px;
-    color: #0a0909;
-    text-align: center;
-    margin: 20px 0;
+
+  .buttonContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+}
+
+.buttonIcon {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.buttonText {
+    font-size: 16px;
     font-weight: 600;
-  }
+}
+  
+  .activityHeader {
+    font-size: 42px;
+    color: #0a0909;
+    margin: 30px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    order: 1;
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .activityHeader {
+        font-size: 32px;
+    }
+    
+    .button {
+        padding: 16px 24px;
+        font-size: 18px;
+    }
+    
+    .languageSelection {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
