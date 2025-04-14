@@ -6,50 +6,55 @@ import FrontBack from './FrontBack';
 //import { sources } from "next/dist/compiled/webpack/webpack";
 import styles from './styles/Flashcards.module.css';
 
-export default function Flashcards(){
+const Flashcards = () => {
     const { targetLanguage } = useContext(LanguageContext);
     const [flashcards, setFlashcards] = useState([
         { front: "Hello", back: ""},
         { front: "Thank you", back: ""},
         { front: "Goodbye", back: ""}
     ]);
+
     const [cardCount, setCardCount] = useState(0);
 
     //API implementation
-    useEffect(() => {
-        const fetchTranslations = async () => {
-            const api = 'https://libretranslate.de/translate'
+    const fetchTranslations = async () => {
+        const api = 'https://api.translateplus.io/v1/translate';
+        const apiKey = 'ed523bd38e59511a176e4e549dd3fccbfb525aa4';
 
-            const translate = await Promise.all(flashcards.map(async (card) => {
-                try {
-                    const translation = await fetch(api, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
+        const translateCards = await Promise.all(flashcards.map(async (card) => {
+            try {
+                const response = await fetch(api, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`,
                         },
                         body: JSON.stringify({
-                            q: card.front,
+                            text: card.front,
                             source: 'en',
                             target: targetLanguage,
-                            format: 'text',
                         }),
                     });
                     
-                    const data = await translation.json();
-                    return {...card, back: data.translatedText || 'Translation Error'};
+                    const data = await response.json();
+                    return {...card, back: data.translations?.[0]?.text || 'Translation Error'};
 
                 } catch (error) {
-                    console.error('Translation failed:', error);
                     return {...card, back: 'Translation Error'};
                 }
             }));
 
             //populate back of flashcard with translation
-            setFlashcards(translate);
+            setFlashcards(translateCards);
         };
 
-        fetchTranslations();
-    }, [targetLanguage, flashcards]);
+        const [hasMounted, setHasMounted] = useState(false);
+
+        useEffect(() => {
+            setHasMounted(true);
+    }, [targetLanguage]);
+
+    if (!hasMounted) return null;
 
     return(
         <div className={styles.flashcardsContainer}>
@@ -65,4 +70,6 @@ export default function Flashcards(){
         </div>
         </div>
     );
-}
+};
+
+export default Flashcards;

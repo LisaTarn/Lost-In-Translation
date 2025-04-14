@@ -50,8 +50,8 @@ import styles from './styles/NavBar.module.css';
         <option value="es">Spanish</option>
         <option value="zh-TW">Chinese</option>
       </select>
+    </div>
   </div>
-</div>
   );
 };
 
