@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { LanguageContext } from "../context/LanguageContext";
-import styles from './NavBar.module.css';
+import styles from './styles/NavBar.module.css';
 
   const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);

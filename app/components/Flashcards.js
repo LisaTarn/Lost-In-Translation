@@ -2,7 +2,7 @@
 'use client'
 import React, { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
-import FrontBack from './FrontBack';
+import FrontBack from './styles/FrontBack';
 //import { sources } from "next/dist/compiled/webpack/webpack";
 import styles from './Flashcards.module.css';
 

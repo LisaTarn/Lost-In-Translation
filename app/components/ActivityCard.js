@@ -4,7 +4,7 @@ import Matchmaking from './Matchmaking';
 import FillBlank from './FillBlank';
 import dynamic from 'next/dynamic';
 import { LanguageContext } from '../context/LanguageContext';
-import styles from './ActivityCard.module.css';
+import styles from './styles/ActivityCard.module.css';
 
 //load flashcards dynamically on client server
 const Flashcards = dynamic(() => import ('./Flashcards'), { ssr: false });
