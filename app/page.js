@@ -10,7 +10,7 @@ export default function Home() {
       <div className={Styles.introContainer}>
         <div className={Styles.intro}>
           <h1 className={Styles.greeting}>Start your journey with us</h1>
-          <p className={Styles.slogan}>"Learn Languages, Stay L.I.T</p>
+          <p className={Styles.slogan}>"Learn Languages, Stay L.I.T"</p>
           <Link href={`/register`}><button className={Styles.register}>Start Learning</button></Link>
         </div>
         <Image className={Styles.logo} src="https://lisatarn.github.io/Lost-In-Translation/images/logo.png" alt="Lost in Translation logo" width={600} height={600}/>
