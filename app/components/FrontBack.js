@@ -12,24 +12,23 @@ const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     const maxCardCount = 3;
 
     const handleFlip = () => {
-        let currentCardCount = cardCount;
-        if (!isCredited){
-            setCardCount(++currentCardCount);
-            setIsCredited(true);
-            if (currentCardCount == maxCardCount){
-                let currentProgress = progress;
-                if (!currentProgress.includes("Flashcards")){
-                    console.log("Flashcards done!");
-                    setProgress(
-                        [
-                            ...progress,
-                            "Flashcards"
-                        ]
-                    );
-                }
+        setIsFlipped((prev) => !prev); // Toggle flip state first
+    
+        if (!isCredited) {
+            updateProgress();
+        }
+    };
+    
+    const updateProgress = () => {
+        setIsCredited(true);
+        setCardCount((prev) => prev + 1);
+    
+        if (cardCount + 1 === maxCardCount) {
+            if (!progress.includes("Flashcards")) {
+                console.log("Flashcards done!");
+                setProgress([...progress, "Flashcards"]);
             }
         }
-        setIsFlipped(!isFlipped);
     };
 
     return(
@@ -39,7 +38,7 @@ const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
                     {frontContent}
                 </div>
                 <div className={styles.flashcardBack}>
-                    {backContent || "No translation available"}
+                    {backContent || 'No translation available'}
                 </div>
             </div>
       </div>
