@@ -1,11 +1,12 @@
-/* Flashcards.module.css */
-
 /* Main container */
 .flashcardsContainer {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-items: center;
 }
 
@@ -24,4 +25,17 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     justify-items: center;
+}
+
+.flashcardsStack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.flashcard {
+    width: 100%;
+    max-width: 300px;
 }

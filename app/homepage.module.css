@@ -1,9 +1,153 @@
-.introContainer {
-    border-radius: 12px;
-    gap: 30px;
-    display: flex;
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Grid container */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  max-width: 1400px;
+  width: 90%;
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 50px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 4px 20px rgba(45, 55, 72, 0.1);
+}
+
+.logoCell {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.spacerCell {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.textCell {
+  grid-column: 1; 
+  grid-row: 2;
+  max-width: 500px;
+}
+
+.iconCell {
+  grid-column: 2; 
+  grid-row: 2; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
+}
+
+.sideIcon {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.greeting {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #2d3748;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.slogan {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #4a5568;
+  font-style: italic;
+}
+
+.register {
+  background-color: #3937e0;
+  color: white;
+  border: none;
+  padding: 18px 36px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.register:hover {
+  background-color: #9190e2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 47, 151, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; 
+    padding: 60px 30px 30px;
+  }
+
+  .logoCell {
+    grid-column: 1;
+    grid-row: 1;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin: 50px;
+    margin-bottom: 20px;
+  }
+
+  .spacerCell {
+    display: none; 
+  }
+
+  .textCell {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .iconCell {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .greeting {
+    font-size: 36px;
+  }
+
+  .slogan {
+    font-size: 20px;
+  }
+
+  .logo {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .greeting {
+    font-size: 28px;
+  }
+
+  .slogan {
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 200px;
+  }
 }
