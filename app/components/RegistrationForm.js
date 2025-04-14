@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
 import Image from 'next/image';
-import styles from './RegistrationForm.module.css';
+import styles from './styles/RegistrationForm.module.css';
 
 export default function RegistrationForm(){
     const {setUser} = useContext(UserContext);

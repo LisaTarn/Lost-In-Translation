@@ -2,7 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProgressContext } from "./Progress";
 import '../globals.css';
-import styles from './MatchGame.module.css';
+import styles from './styles/MatchGame.module.css';
 
 const words = [
   { english: "apple", french: "pomme" },

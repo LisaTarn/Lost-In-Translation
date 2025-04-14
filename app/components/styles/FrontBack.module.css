@@ -1,3 +1,6 @@
+/* FrontBack.module.css */
+
+/* Flashcard container */
 .flashcard {
     width: 300px;
     height: 200px;
@@ -6,7 +9,7 @@
     cursor: pointer;
 }
 
-/* flashcard Content */
+/* Inner content (flippable part) */
 .flashcardContent {
     position: relative;
     width: 100%;
@@ -17,11 +20,12 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Flipped state */
 .flashcard.flipped .flashcardContent {
     transform: rotateY(180deg);
 }
 
-/* front and back faces */
+/* Front and Back faces */
 .flashcardFront,
 .flashcardBack {
     position: absolute;
@@ -39,40 +43,16 @@
     text-align: center;
 }
 
+/* Front face styling */
 .flashcardFront {
     background-color: #311a70;
     color: white;
 }
 
+/* Back face styling */
 .flashcardBack {
     background-color: #20176d;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.flashcardBack {
-    font-style: italic;
     color: #e1bee7;
-}
-
-.flashcardsContainer {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.flashcardsHeader {
-    font-family: 'Poppins', sans-serif;
-    color: #311a70;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.flashcardsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    justify-items: center;
+    transform: rotateY(180deg);
+    font-style: italic;
 }

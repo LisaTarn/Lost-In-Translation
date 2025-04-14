@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
-import styles from './FillBlank.module.css';
+import styles from './styles/FillBlank.module.css';
 
 export default function FillBlank(){
     const sentences = [
