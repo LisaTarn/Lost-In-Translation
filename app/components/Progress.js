@@ -5,7 +5,7 @@ export const ProgressContext = createContext();
 
 export function Progress({children}){
   
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState([]);
     return(
         <ProgressContext.Provider value={{ progress, setProgress}}>
             {children}

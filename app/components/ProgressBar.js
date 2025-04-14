@@ -4,8 +4,8 @@ import { ProgressContext } from "./Progress";
 
 export default function ProgressBar(){
     const {progress} = useContext(ProgressContext);
-    const maxPoints = 9;
-    const progressPercent = ((progress * 100 / maxPoints).toFixed(2) > 100) ? 100 : (progress * 100 / maxPoints).toFixed(2);
+    const maxPoints = 3; // one for each activity
+    const progressPercent = ((progress.length * 100 / maxPoints).toFixed(2) > 100) ? 100 : (progress.length * 100 / maxPoints).toFixed(2);
     return(
         <div>
             <div style= {{

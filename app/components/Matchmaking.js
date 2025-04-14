@@ -10,7 +10,6 @@ const words = [
   { english: "tree", french: "arbre" },
 ];
 
-
 const shuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
 
 export default function MatchGame() {
@@ -19,8 +18,9 @@ export default function MatchGame() {
   const [selectedEnglish, setSelectedEnglish] = useState(null);
   const [matchedPairs, setMatchedPairs] = useState([]);
   const [message, setMessage] = useState("");
-   const {progress, setProgress} = useContext(ProgressContext);
+  const {progress, setProgress} = useContext(ProgressContext);
   
+  const maxPairsCount = 4;
 
   useEffect(() => {
     setShuffledWords(shuffleArray(words));
@@ -38,9 +38,19 @@ export default function MatchGame() {
     if (selectedEnglish) {
       if (selectedEnglish.french === word.french) {
         setMatchedPairs([...matchedPairs, selectedEnglish]);
-        const currentProgress = progress;
-          setProgress(currentProgress + 1);
         setMessage("Correct!");
+        if (matchedPairs.length == maxPairsCount - 1){
+          let currentProgress = progress;
+          if (!currentProgress.includes("Matchmaking")){
+            console.log("Matchmaking done!");
+            setProgress(
+              [
+                ...progress,
+                "Matchmaking"
+              ]
+            );
+          }
+        }
       } else {
         setMessage("Incorrect! Try again.");
       }

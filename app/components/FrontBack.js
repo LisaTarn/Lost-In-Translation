@@ -4,21 +4,32 @@ import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
 import '../globals.css';
 
-const FrontBack = ({ frontContent, backContent}) => {
+const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     const [isFlipped, setIsFlipped] = useState(false);
     const [isCredited, setIsCredited] = useState(false);
     const {progress, setProgress} = useContext(ProgressContext);
 
-    
-    const handleFlip = () => {
-        setIsFlipped(!isFlipped);
+    const maxCardCount = 3;
 
-    {/*const currentProgress = progress;
+    const handleFlip = () => {
+        let currentCardCount = cardCount;
         if (!isCredited){
-          setProgress(currentProgress + 1);
-          setIsCredited(true);
+            setCardCount(++currentCardCount);
+            setIsCredited(true);
+            if (currentCardCount == maxCardCount){
+                let currentProgress = progress;
+                if (!currentProgress.includes("Flashcards")){
+                    console.log("Flashcards done!");
+                    setProgress(
+                        [
+                            ...progress,
+                            "Flashcards"
+                        ]
+                    );
+                }
+            }
         }
-    }*/}
+        setIsFlipped(!isFlipped);
     };
 
     return(

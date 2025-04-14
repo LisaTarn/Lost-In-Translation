@@ -22,13 +22,24 @@ export default function FillBlank(){
   const checkAnswers = () => {
     const correctAnswers = sentences.map(sentence => sentence.french);
     const result = answers.map((answer, index) => answer.trim().toLowerCase() === correctAnswers[index].trim().toLowerCase());
-    let currentProgress = progress;
+    let correctAnswersCount = 0;
     for (const res of result){
       if (res){
-        currentProgress++;
+        correctAnswersCount++;
       }
     }
-    setProgress(currentProgress);
+    if (correctAnswersCount == result.length){
+      let currentProgress = progress;
+      if (!currentProgress.includes("FillBlank")){
+        console.log("FillBlank done!");
+        setProgress(
+          [
+            ...progress,
+            "FillBlank"
+          ]
+        );
+      }
+    }
     setFeedback(result);
   };
 

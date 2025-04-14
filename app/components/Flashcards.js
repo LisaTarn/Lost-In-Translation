@@ -12,6 +12,7 @@ export default function Flashcards(){
         { front: "Thank you", back: ""},
         { front: "Goodbye", back: ""}
     ]);
+    const [cardCount, setCardCount] = useState(0);
 
     //API implementation
     useEffect(() => {
@@ -53,7 +54,7 @@ export default function Flashcards(){
         <div>
             <h1>Flashcards</h1>
             {flashcards.map((card, index) => (
-                <FrontBack key={index} frontContent={card.front} backContent={card.back} />
+                <FrontBack key={index} frontContent={card.front} backContent={card.back} cardCount={cardCount} setCardCount={setCardCount}/>
             ))}
         </div>
     );
