@@ -31,12 +31,12 @@ export default function FillBlank(){
     }
     if (correctAnswersCount == result.length){
       let currentProgress = progress;
-      if (!currentProgress.includes("FillBlank")){
+      if (!currentProgress.includes("FillInTheBlanks")){
         console.log("FillBlank done!");
         setProgress(
           [
             ...progress,
-            "FillBlank"
+            "FillInTheBlanks"
           ]
         );
       }

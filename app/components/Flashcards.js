@@ -65,6 +65,8 @@ const Flashcards = () => {
                 key={index} 
                 frontContent={card.front} 
                 backContent={card.back}
+                cardCount={cardCount}
+                setCardCount={setCardCount}
                 className={styles.flashcard} />
             ))}
         </div>

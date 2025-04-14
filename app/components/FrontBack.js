@@ -24,9 +24,9 @@ const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
         setCardCount((prev) => prev + 1);
     
         if (cardCount + 1 === maxCardCount) {
-            if (!progress.includes("Flashcards")) {
+            if (!progress.includes("Flashcard")) {
                 console.log("Flashcards done!");
-                setProgress([...progress, "Flashcards"]);
+                setProgress([...progress, "Flashcard"]);
             }
         }
     };
