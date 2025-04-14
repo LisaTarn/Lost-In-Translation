@@ -1,0 +1,9 @@
+.introContainer {
+    border-radius: 12px;
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 50px;
+}
