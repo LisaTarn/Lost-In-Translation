@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import FrontBack from './FrontBack';
 //import { sources } from "next/dist/compiled/webpack/webpack";
-import styles from './Flashcards.module.css';
+import styles from './FlashCards.module.css';
 
 export default function Flashcards(){
     const { targetLanguage } = useContext(LanguageContext);
