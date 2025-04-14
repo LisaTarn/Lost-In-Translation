@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import FrontBack from './FrontBack';
 //import { sources } from "next/dist/compiled/webpack/webpack";
+import styles from './Flashcards.module.css';
 
 export default function Flashcards(){
     const { targetLanguage } = useContext(LanguageContext);
@@ -29,7 +30,7 @@ export default function Flashcards(){
                         body: JSON.stringify({
                             q: card.front,
                             source: 'en',
-                            target: 'targetLanguage',
+                            target: targetLanguage,
                             format: 'text',
                         }),
                     });
@@ -48,14 +49,20 @@ export default function Flashcards(){
         };
 
         fetchTranslations();
-    }, [targetLanguage]);
+    }, [targetLanguage, flashcards]);
 
     return(
-        <div>
-            <h1>Flashcards</h1>
+        <div className={styles.flashcardsContainer}>
+            <h1 className={styles.flashcardsHeader}>Flashcards</h1>
+            <div className={styles.flashcardsStack}>
             {flashcards.map((card, index) => (
-                <FrontBack key={index} frontContent={card.front} backContent={card.back} cardCount={cardCount} setCardCount={setCardCount}/>
+                <FrontBack 
+                key={index} 
+                frontContent={card.front} 
+                backContent={card.back}
+                className={styles.flashcard} />
             ))}
+        </div>
         </div>
     );
 }

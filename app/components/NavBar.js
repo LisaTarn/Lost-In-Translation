@@ -2,6 +2,7 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { LanguageContext } from "../context/LanguageContext";
+import styles from './Navbar.module.css';
 
   const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,34 +23,34 @@ import { LanguageContext } from "../context/LanguageContext";
   };
 
   return (
-    <div className="navigation-bar">
-        <nav
-        onMouseLeave={closeNavbar}>
-          <button
-            onClick={toggleNavbar}
-          >
-            ☰ Menu
-          </button>
-          {isOpen && (
-            <ul className="navbar-menu">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/activities">Activites</Link></li>
-              <li><Link href="/progress">Progress</Link></li>
-              <li><Link href="/account">Account</Link></li>
-              <li><Link href="/register">Register</Link></li>
-            </ul>
-          )}
-        </nav>
-
-        <div className="language-selection">
-          <label>Select Language:</label>
-            <select id="language" value={targetLanguage} onChange={handleLanguageChange}>
-              <option value="fr">French</option>
-              <option value="es">Spanish</option>
-              <option value="zh-TW">Chinese</option>
-            </select>
-        </div>
-    </div>
+<div className={styles.navContainer}>
+      <nav className={styles.nav}>
+        <button
+          onClick={toggleNavbar}
+          className={styles.menuButton}
+      >
+        ☰ Menu
+      </button>
+      {isOpen && (
+        <ul className={styles.menuList}>
+          <li className={styles.menuItem}><Link href="/" className={styles.menuLink} onClick={closeNavbar}>Home</Link></li>
+          <li className={styles.menuItem}><Link href="/activities" className={styles.menuLink} onClick={closeNavbar}>Activities</Link></li>
+          <li className={styles.menuItem}><Link href="/progress" className={styles.menuLink} onClick={closeNavbar}>Progress</Link></li>
+          <li className={styles.menuItem}><Link href="/account" className={styles.menuLink} onClick={closeNavbar}>Account</Link></li>
+          <li className={styles.menuItem}><Link href="/register" className={styles.menuLink} onClick={closeNavbar}>Register</Link></li>
+        </ul>
+      )}
+    </nav>
+    
+    <div className="language-selection">
+    <label>Select Language:</label>
+      <select id="language" value={targetLanguage} onChange={handleLanguageChange}>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
+        <option value="zh-TW">Chinese</option>
+      </select>
+  </div>
+</div>
   );
 };
 

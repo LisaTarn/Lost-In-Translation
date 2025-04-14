@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProgressContext } from "./Progress";
 import '../globals.css';
+import styles from './MatchGame.module.css';
 
 const words = [
   { english: "apple", french: "pomme" },
@@ -59,53 +60,48 @@ export default function MatchGame() {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>Match English words to their French translations</h2>
-      <p>
+    <div className={styles.matchGameContainer}>
+      <h2 className={styles.gameHeader}>Match English words to their French translations</h2>
+      <p className={styles.message}>
         {message}
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
-        <div>
-          <h3>English</h3>
+      <div className={styles.gameColumns}>
+        <div className={styles.wordColumn}>
+          <h3 className={styles.columnHeader}>English</h3>
           {shuffledWords.map((word) => (
             <button
               key={word.english}
               onClick={() => handleEnglishClick(word)}
               disabled={matchedPairs.includes(word)}
-              style={{
-                display: "block",
-                margin: "5px",
-                padding: "10px",
-                backgroundColor: selectedEnglish === word? "#5852d6" :  " #34197e",
-                fontWeight: selectedEnglish === word ? "bold" : "normal",
-              }}
+              className={`${styles.wordButton} ${
+                selectedEnglish === word ? styles.selected : ''
+              }`}
             >
               {word.english}
             </button>
           ))}
         </div>
-        <div>
-          <h3>French</h3>
+        <div className={styles.wordColumn}>
+          <h3 className={styles.columnHeader}>French</h3>
           {shuffledTranslations.map((word) => (
             <button
               key={word.french}
               onClick={() => handleFrenchClick(word)}
               disabled={matchedPairs.includes(word)}
-              style={{
-                display: "block",
-                margin: "5px",
-                padding: "10px",
-              }}
+              className={styles.wordButton}
             >
               {word.french}
             </button>
           ))}
         </div>
       </div>
+
+      <div className={styles.matchedPairs}>
       <h3>Matched Pairs:</h3>
       {matchedPairs.map((pair) => (
-        <p key={pair.english}>{pair.english} - {pair.french}</p>
+        <p key={pair.english} className={styles.matchedPair}>{pair.english} - {pair.french}</p>
       ))}
+    </div>
     </div>
   );
 }
