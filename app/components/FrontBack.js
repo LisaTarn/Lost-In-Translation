@@ -2,7 +2,7 @@
 'use client'
 import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
-import styles from './Flashcards.module.css';
+import styles from './FlashCards.module.css';
 
 const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     const [isFlipped, setIsFlipped] = useState(false);
