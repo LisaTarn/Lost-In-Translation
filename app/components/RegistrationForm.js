@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from "./UserDetails";
 import Image from 'next/image';
-import '../globals.css';
+import styles from './RegistrationForm.module.css';
 
 export default function RegistrationForm(){
     const {setUser} = useContext(UserContext);
@@ -23,10 +23,10 @@ export default function RegistrationForm(){
         alert("Form submitted:", formData)
     };
 
-    return(
-        <div className="registration-page">
-        <div className="registration-container">
-            <div className="registration-box">
+    return (
+        <div className={styles.container}>
+            <div className={styles.formSection}>
+                <div className={styles.formContainer}>
         <form onSubmit={handleSubmit}>
             <h1>Register for L.I.T.</h1>
           <label htmlFor="username">Username:</label>
@@ -59,14 +59,16 @@ export default function RegistrationForm(){
           <button type="submit">Register</button>
         </form>
         </div>
+        </div>
 
-        <div className="info-box">
+        <div className={styles.infoSection}>
+        <div className={styles.logoContainer}>
                 <Image src='https://lisatarn.github.io/Lost-In-Translation/images/logo.png'
                 alt="LIT Logo" 
-                width={500}
+                width={300}
                 height={300}
-            
                  />
+                 </div>
                 <p>
                     At L.I.T, we believe that language is more than just words—it's a bridge to new cultures, connections, and opportunities. Our mission is to make learning languages fun, accessible, and engaging for everyone, no matter where they are in their journey.
                     <br /><br />
@@ -75,7 +77,6 @@ export default function RegistrationForm(){
                     Join us in breaking language barriers and exploring the world—one word at a time!
                 </p>
             </div>
-        </div>
         </div>
     )
 }

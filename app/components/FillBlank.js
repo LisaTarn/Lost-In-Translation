@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
+import styles from './FillBlank.module.css';
 
 export default function FillBlank(){
     const sentences = [
@@ -45,18 +46,19 @@ export default function FillBlank(){
 
     return(
       <div className="page">
-      <div className="fillblank-container">
+      <div className={styles.fillBlankContainer}>
             {sentences.map((sentence, index) => (
-        <div key={index} style={{ marginBottom: '20px' }}>
-          <p>{sentence.english}</p>
+        <div key={index} className={styles.sentenceItem}>
+          <p className={styles.sentenceText}>{sentence.english}</p>
           <input
             type="text"
+            className={styles.fillBlankInput}
             value={answers[index]}
             onChange={(e) => handleInputChange(index, e.target.value)}
             placeholder="Enter the French translation"
           />
           {feedback && (
-            <p>
+            <p className={styles.feedbackText}>
               {feedback[index]
                 ? 'Correct!'
                 : `Incorrect. Correct answer: ${sentence.french}`}
@@ -64,7 +66,8 @@ export default function FillBlank(){
           )}
         </div>
       ))}
-      <button onClick={checkAnswers}>Check Answers</button>
+      <button className={styles.checkButton}
+      onClick={checkAnswers}>Check Answers</button>
     </div> 
     </div>
     )

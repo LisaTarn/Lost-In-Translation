@@ -2,7 +2,7 @@
 'use client'
 import React, { useState, useContext } from 'react';
 import { ProgressContext } from "./Progress";
-import '../globals.css';
+import styles from './FlashCards.module.css';
 
 const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     const [isFlipped, setIsFlipped] = useState(false);
@@ -33,13 +33,13 @@ const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     };
 
     return(
-      <div onClick={handleFlip} className={`flashcard ${isFlipped ? "flipped" : ""}`}>
-            <div className="flashcard-content">
-                <div className="flashcard-front">
+      <div onClick={handleFlip} className={`${styles.flashcard} ${isFlipped ? styles.flipped : ''}`}>
+            <div className={styles.flashcardContent}>
+                <div className={styles.flashcardFront}>
                     {frontContent}
                 </div>
-                <div className="flashcard-back">
-                    {backContent ? backContent : "No translation available"}
+                <div className={styles.flashcardBack}>
+                    {backContent || "No translation available"}
                 </div>
             </div>
       </div>

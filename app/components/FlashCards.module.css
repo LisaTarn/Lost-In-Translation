@@ -1,0 +1,78 @@
+.flashcard {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+/* flashcard Content */
+.flashcardContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.flashcard.flipped .flashcardContent {
+    transform: rotateY(180deg);
+}
+
+/* front and back faces */
+.flashcardFront,
+.flashcardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.flashcardFront {
+    background-color: #311a70;
+    color: white;
+}
+
+.flashcardBack {
+    background-color: #20176d;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flashcardBack {
+    font-style: italic;
+    color: #e1bee7;
+}
+
+.flashcardsContainer {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.flashcardsHeader {
+    font-family: 'Poppins', sans-serif;
+    color: #311a70;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.flashcardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
