@@ -1,11 +1,12 @@
 'use client'
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ProgressContext } from "./Progress";
 import styles from './styles/Progress.module.css';
 import Image from 'next/image';
 
 export default function ProgressBar(){
     const {progress} = useContext(ProgressContext);
+
     const activities = [
         { 
             name: 'Flashcards', 
@@ -23,9 +24,23 @@ export default function ProgressBar(){
             image: 'https://lisatarn.github.io/Lost-In-Translation/images/fillblank-badge.png'
         }
     ];
+  
+    const badgeList = [
+        {name: "Beginner", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 33.32},
+        {name: "Intermediate", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 66.66},
+        {name: "Advanced", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 100}
+    ];
 
     const completedCount = activities.filter(a => progress.includes(a.key)).length;
     const completionPercent = Math.round((completedCount / activities.length) * 100);
+    const [badges, setBadges] = useState([]);
+
+    useEffect(() => {
+        const newBadges = badgeList.filter(badge => completionPercent >= badge.threshold);
+        if (newBadges.length !== badges.length) {
+            setBadges(newBadges);
+        }
+    }, [progress, completionPercent]);
 
     return (
         <div className={styles.progressContainer}>
@@ -69,7 +84,26 @@ export default function ProgressBar(){
                     ))}
                 </div>
             </div>
+
+            {/* Added Achievement Badges Section */}
+            <div className={styles.progressSection}>
+                <h3 className={styles.sectionTitle}>Achievement Badges</h3>
+                <div className={styles.badgesContainer}>
+                    {badges.map((badge, index) => (
+                        <div key={index} className={styles.badge}>
+                            <div className={styles.badgeImage}>
+                                <Image
+                                    src={badge.image}
+                                    alt={`${badge.name} badge`}
+                                    width={100}
+                                    height={100}
+                                />
+                            </div>
+                            <div className={styles.badgeLabel}>{badge.name}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }
-
