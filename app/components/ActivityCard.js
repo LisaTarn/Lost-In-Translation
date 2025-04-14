@@ -34,7 +34,8 @@ export default function ActivityCard(){
         <div className={styles.activityCard}>
             <div className={styles.languageSelection}>
                 <label>Select Language:</label>
-                <select id="language" value={targetLanguage} onChange={handleLanguageChange}>
+                <select id="language" value={targetLanguage} onChange={handleLanguageChange}
+                className={styles.languageSelect}>
                     <option value="fr">French</option>
                     <option value="es">Spanish</option>
                     <option value="zh-TW">Chinese</option>
