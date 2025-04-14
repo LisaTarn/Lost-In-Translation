@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import Link from "next/link";
 import { LanguageContext } from "../context/LanguageContext";
-import styles from './Navbar.module.css';
+import styles from './NavBar.module.css';
 
   const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,9 +42,10 @@ import styles from './Navbar.module.css';
       )}
     </nav>
     
-    <div className="language-selection">
+    <div className={styles.languageSelection}>
     <label>Select Language:</label>
-      <select id="language" value={targetLanguage} onChange={handleLanguageChange}>
+      <select id="language" value={targetLanguage} onChange={handleLanguageChange}
+      className={styles.languageSelect}>
         <option value="fr">French</option>
         <option value="es">Spanish</option>
         <option value="zh-TW">Chinese</option>

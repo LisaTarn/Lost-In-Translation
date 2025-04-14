@@ -47,14 +47,38 @@
     padding: 1rem;
   }
   
-  .languageSelection {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .languageSelect {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
+/* Language Selector Styles */
+.languageSelection {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.languageSelection label {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.languageSelect {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.languageSelect:hover {
+  border-color: #4CAF50;
+}
+
+.languageSelect:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}

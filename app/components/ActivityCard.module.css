@@ -8,27 +8,45 @@
     margin: 0 auto;
   }
   
-  /* language selection styles */
-  .languageSelection {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .languageSelection label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: #0a0909;
-  }
-  
-  .languageSelection select {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #000000;
-    font-family: 'Poppins', sans-serif;
-    background-color: white;
-  }
+/* Language Selector Styles */
+.languageSelection {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.languageSelection label {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+.languageSelection select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: white;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.languageSelection select:hover {
+  border-color: #4299e1;
+}
+
+.languageSelection select:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
   
   /* button container styles */
   .buttonContainer {
