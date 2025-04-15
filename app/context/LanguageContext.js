@@ -6,7 +6,7 @@ export const LanguageContext = createContext();
 
 //context provider to wrap around components that need translations
 export const LanguageProvider = ({children}) => {
-    const [targetLanguage, setTargetLanguage] = useState('en');
+    const [targetLanguage, setTargetLanguage] = useState('fr');
 
     return (
         <LanguageContext.Provider value = {{targetLanguage, setTargetLanguage}}>

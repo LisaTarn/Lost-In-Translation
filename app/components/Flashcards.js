@@ -13,13 +13,13 @@ const Flashcards = () => {
         { front: "Thank you", back: ""},
         { front: "Goodbye", back: ""}
     ]);
-
+    const [fetched, setFetched] = useState(false);
     const [cardCount, setCardCount] = useState(0);
 
     //API implementation
     const fetchTranslations = async () => {
         const api = 'https://api.translateplus.io/v1/translate';
-        const apiKey = 'ed523bd38e59511a176e4e549dd3fccbfb525aa4';
+        const apiKey = 'bcf49d70879d9af48e20764128ae73731d66f3b2';
 
         const translateCards = await Promise.all(flashcards.map(async (card) => {
             try {
@@ -27,7 +27,7 @@ const Flashcards = () => {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`,
+                        'X-API-KEY': apiKey,
                         },
                         body: JSON.stringify({
                             text: card.front,
@@ -37,24 +37,31 @@ const Flashcards = () => {
                     });
                     
                     const data = await response.json();
-                    return {...card, back: data.translations?.[0]?.text || 'Translation Error'};
+                    console.log(data);
+                    return {...card, back: data.translations?.translation || 'Translation Error'};
 
                 } catch (error) {
                     return {...card, back: 'Translation Error'};
                 }
             }));
+        //populate back of flashcard with translation
+        setFlashcards(translateCards);
+    };
+    
+    const [hasMounted, setHasMounted] = useState(false);
 
-            //populate back of flashcard with translation
-            setFlashcards(translateCards);
-        };
-
-        const [hasMounted, setHasMounted] = useState(false);
-
-        useEffect(() => {
-            setHasMounted(true);
+    useEffect(() => {
+        setHasMounted(true);
     }, [targetLanguage]);
 
-    if (!hasMounted) return null;
+    if (!hasMounted) 
+        return null
+    else {
+        if (!fetched){
+            fetchTranslations();
+            setFetched(true);
+        }
+    }
 
     return(
         <div className={styles.flashcardsContainer}>
