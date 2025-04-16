@@ -93,12 +93,12 @@ export default function FillBlank() {
   return(
     <div className={styles.page}>
     <div className={styles.backButtonContainer}>
-      <button 
-        onClick={() => window.location.href = '/activities'}
-        className={styles.backButton}
-      >
-        <span className={styles.arrow}>←</span> Back to Activities
-      </button>
+    <button 
+  onClick={() => window.location.href = `${window.location.origin}/activities`}
+  className={styles.backButton}
+>
+  <span className={styles.arrow}>←</span> Back to Activities
+</button>
     </div>
       <div className={styles.fillBlankContainer}>
         {sentences.map((sentence, index) => (

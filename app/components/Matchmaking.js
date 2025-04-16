@@ -111,7 +111,7 @@ export default function MatchGame() {
   return (
     <div className={styles.matchGameContainer}>
 <button 
-  onClick={() => window.location.href = '/activities'}
+  onClick={() => window.location.href = `${window.location.origin}/activities`}
   className={styles.backButton}
 >
   <span className={styles.arrow}>←</span> Back to Activities
