@@ -62,6 +62,10 @@ export default function MatchGame() {
   
   useEffect(() => {
       setHasMounted(true);
+      fetchTranslations();
+      setSelectedEnglish(null);
+      setMatchedPairs([]);
+      setMessage("");
     }, [targetLanguage]);
   
   if (!hasMounted) 

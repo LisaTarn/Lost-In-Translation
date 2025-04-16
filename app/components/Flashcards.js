@@ -52,6 +52,7 @@ const Flashcards = () => {
 
     useEffect(() => {
         setHasMounted(true);
+        fetchTranslations();
     }, [targetLanguage]);
 
     if (!hasMounted) 

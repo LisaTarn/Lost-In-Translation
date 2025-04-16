@@ -16,7 +16,7 @@ export default function FillBlank() {
   const {progress, setProgress} = useContext(ProgressContext);
   const [translations, setTranslations] = useState([]);
   const { targetLanguage } = useContext(LanguageContext);
-  const { setTranslationsFetched } = useState(false);
+  //const { setTranslationsFetched } = useState(false);
 
   //API implementation
   const fetchTranslations = async () => {
@@ -45,12 +45,14 @@ export default function FillBlank() {
       }
     }));
     setTranslations(typeTranslation);
-    setTranslationsFetched(true);
+    //setTranslationsFetched(true);
   };
 
   useEffect(() => {
     fetchTranslations();
-  }, []);  
+    setAnswers(Array(sentences.length).fill(''));
+    setFeedback(null);
+  }, [targetLanguage]);  
 
   const handleInputChange = (index, value) => {
     const updatedAnswers = [...answers];

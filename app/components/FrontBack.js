@@ -1,13 +1,15 @@
 //handles displaying flashcard flip logic
 'use client'
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ProgressContext } from "./Progress";
 import styles from './styles/FrontBack.module.css';
+import { LanguageContext } from "../context/LanguageContext";
 
 const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
     const [isFlipped, setIsFlipped] = useState(false);
     const [isCredited, setIsCredited] = useState(false);
     const {progress, setProgress} = useContext(ProgressContext);
+    const { targetLanguage } = useContext(LanguageContext);
 
     const maxCardCount = 3;
 
@@ -30,6 +32,10 @@ const FrontBack = ({ frontContent, backContent, cardCount, setCardCount}) => {
             }
         }
     };
+
+    useEffect(() => {
+            setIsFlipped(false);
+        }, [targetLanguage]);
 
     return(
       <div onClick={handleFlip} className={`${styles.flashcard} ${isFlipped ? styles.flipped : ''}`}>
