@@ -15,12 +15,12 @@
   .gameColumns {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 80px;
     margin: 30px 0;
   }
   
   .wordColumn {
-    width: 200px;
+    width: 300px;
   }
   
   .columnHeader {
@@ -33,16 +33,21 @@
   .wordButton {
     display: block;
     width: 100%;
-    padding: 12px;
-    margin: 8px 0;
+    padding: 25px 15px;
+    margin: 15px 0;
     background-color: #34197e;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
   
   .wordButton:hover {
@@ -59,7 +64,8 @@
   .wordButton.selected {
     background-color: #5852d6;
     font-weight: bold;
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 4px white;
+    transform: scale(1.05);
   }
   
   .message {
@@ -80,3 +86,40 @@
     font-size: 16px;
     margin: 5px 0;
   }
+/* back button */
+.backButton {
+  background-color: #443da0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.backButton:hover {
+  background-color: #c69af0;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.backButton:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.backButton:hover .arrow {
+  transform: translateX(-3px);
+}
