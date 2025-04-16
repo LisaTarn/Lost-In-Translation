@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { ProgressContext } from "./Progress";
 import { LanguageContext } from '../context/LanguageContext';
 import styles from './styles/FillBlank.module.css';
-import { useRouter } from 'next/navigation';
+
 
 export default function FillBlank() {
   const sentences = [
@@ -92,14 +92,7 @@ export default function FillBlank() {
 
   return(
     <div className={styles.page}>
-    <div className={styles.backButtonContainer}>
-    <button 
-  onClick={() => window.location.href = `${window.location.origin}/activities`}
-  className={styles.backButton}
->
-  <span className={styles.arrow}>←</span> Back to Activities
-</button>
-    </div>
+   
       <div className={styles.fillBlankContainer}>
         {sentences.map((sentence, index) => (
           <div key={index} className={styles.sentenceItem}>

@@ -66,12 +66,7 @@ const Flashcards = () => {
 
     return(
         <div className={styles.flashcardsContainer}>
-                    <button 
-  onClick={() => window.location.href = `${window.location.origin}/activities`}
-  className={styles.backButton}
->
-  <span className={styles.arrow}>←</span> Back to Activities
-</button>
+    
             <h1 className={styles.flashcardsHeader}>Flashcards</h1>
             <div className={styles.flashcardsStack}>
             {flashcards.map((card, index) => (

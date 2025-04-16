@@ -110,12 +110,7 @@ export default function MatchGame() {
 
   return (
     <div className={styles.matchGameContainer}>
-<button 
-  onClick={() => window.location.href = `${window.location.origin}/activities`}
-  className={styles.backButton}
->
-  <span className={styles.arrow}>←</span> Back to Activities
-</button>
+
       <h2 className={styles.gameHeader}>Match English words to their appropriate translations</h2>
       <p className={styles.message}>
         {message}
