@@ -26,8 +26,8 @@ export default function ProgressBar(){
     ];
   
     const badgeList = [
-        {name: "Beginner", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 33.32},
-        {name: "Intermediate", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 66.66},
+        {name: "Beginner", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 33},
+        {name: "Intermediate", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 67},
         {name: "Advanced", image: 'https://lisatarn.github.io/Lost-In-Translation/images/logo.png', threshold: 100}
     ];
 
