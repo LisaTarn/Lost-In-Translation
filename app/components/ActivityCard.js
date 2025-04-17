@@ -1,14 +1,14 @@
 'use client'
 import React, { useContext, useState } from 'react';
-import Matchmaking from './Matchmaking';
-import FillBlank from './FillBlank';
 import dynamic from 'next/dynamic';
 import { LanguageContext } from '../context/LanguageContext';
 import styles from './styles/ActivityCard.module.css';
 import Image from 'next/image';
 
-// Load flashcards dynamically on the client
+// Load components dynamically on the client
 const Flashcards = dynamic(() => import ('./Flashcards'), { ssr: false });
+const Matchmaking = dynamic(() => import ('./Matchmaking'), { ssr: false });
+const FillBlank = dynamic(() => import ('./FillBlank'), { ssr: false });
 
 export default function ActivityCard(){
     const [active, setActive] = useState(null);
